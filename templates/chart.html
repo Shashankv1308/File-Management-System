@@ -1,0 +1,130 @@
+{% include 'base.html' %}
+
+
+{% block content%}
+{% if user.is_authenticated and user.is_admin %}
+<div class="container text-center mt-4">
+  <div class="row justify-content-evenly">
+    <div class="col-md-4   ">
+      Files
+      <div>
+        <canvas id="myChart" width="70" height="70"></canvas>
+      </div>
+      
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+      <script>
+        const ctx = document.getElementById('myChart');
+  
+        new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ["Student_files", "Faculty_files", "Common", "Admin_files"],
+            datasets: [{
+              label: '# of students',
+              data: [{{ f }}, {{ f1 }},{{ f2 }}, {{ f3 }}],
+          borderWidth: 1
+              }]
+            },
+          options: {
+          scales: {
+           
+          }
+        }
+          });
+      </script>
+    </div>
+    <div class="col-md-4">
+      Source
+      <div>
+        <canvas id="myChart1" width="70" height="70"></canvas>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      const cx = document.getElementById('myChart1');
+
+      new Chart(cx, {
+        type: 'pie',
+        data: {
+          labels: ["Principal Office", "Department", "Dean Academics"],
+          datasets: [{
+            label: 'source of files',
+            data: [{{ s1 }}, {{ s2 }},{{ s3 }}],
+        borderWidth: 1
+            }]
+          },
+        options: {
+        scales: {
+          
+        }
+      }
+        });
+    </script>
+    </div>
+  </div>
+</div>
+<div class="col-md-4 mt-2 pt-2 ms-3 float-start">
+  <div>
+    <div>
+      <canvas id="myChart" width="40" height="40"></canvas>
+    </div>
+    <div>
+      <canvas id="myChart1" width="40" height="40"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      const ctx = document.getElementById('myChart');
+
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ["Student_files", "Faculty_files", "Common", "Admin_files"],
+          datasets: [{
+            label: '# of students',
+            data: [{{ f }}, {{ f1 }},{{ f2 }}, {{ f3 }}],
+        borderWidth: 1
+            }]
+          },
+        options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+        });
+    </script>
+  </div>
+  <div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      const cx = document.getElementById('myChart1');
+
+      new Chart(cx, {
+        type: 'pie',
+        data: {
+          labels: ["Principal Office", "Department", "Dean Academics"],
+          datasets: [{
+            label: 'source of files',
+            data: [{{ s1 }}, {{ s2 }},{{ s3 }}],
+        borderWidth: 1
+            }]
+          },
+        options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+        });
+    </script>
+  </div>
+</div>
+</div>
+{% endif %}
+
+{% endblock content %}

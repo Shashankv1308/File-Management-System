@@ -1,0 +1,20 @@
+{% load static %}
+{% include 'base.html'%}
+{% block content %}
+
+<div  >
+    
+    <center>
+        <h1>
+            Department File Management System
+    </h1>
+        <p>Total number of files {{nums}}</p> 
+
+        
+    </center>
+    
+    
+</div>
+<script src="{% static 'script.js' %}"></script>
+
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% include 'base.html' %}
+{% block content %}
+{% if user.is_authenticated and user.is_admin %}
+<form class="col-12 mt-4"action="" method="post" autocomplete="off" >
+    {% csrf_token %}
+    <div class="mt-4">
+        <label class="col-form-label">Faculty</label>
+        {{ F_form.Name}}
+      </div>
+      <div class="mt-4">
+        <label class="col-form-label">SSN</label>
+        {{ F_form.Ssn }}
+      </div>
+      <div class="mt-4">
+        <label class="col-form-label">Email</label>
+        {{ F_form.Email}}
+      </div>
+     
+      
+        
+
+    <div class="row mt-4" >
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-success btn-block btn-lg"> 
+                 submit
+                </button>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'F_list' %}" class="btn btn-secondary btn-block btn-lg">
+                Back to list
+              </a>
+        </div>
+
+    </div>
+    
+</form>
+
+{% endif %}
+
+{% endblock content %}

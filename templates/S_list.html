@@ -1,0 +1,75 @@
+{% include 'base.html'%}
+<title>Student List</title>
+{% block content %}
+{% if user.is_authenticated and user.is_admin %}
+
+<body style="background-color:rgba(143, 158, 157, 0.671);">
+    <div class="col mt-4  offset-md-1">
+        <table class="table table-borderless">
+            <thread class="border-bottom font-weight-bold">
+                <tr>
+                    <td><b>Name</b></td>
+                    <td><b>USN</b></td>
+                    <td><b>Email</b></td>
+                    <td><b>Sem</b></td>
+                    <td><a href="{% url 'S_form'%}"class="btn btn-outline-success " style="background-color: rgb(155, 198, 198);">
+                        <b> ADD  </b>
+                    </b></td>
+                    <td>
+                        <form action="" autocomplete="off">
+                            <div class="p-2 bg-light rounded rounded-pill shadow-sm mb-2 ">
+                              <div class="input-group">
+                                <input type="search" name="s" placeholder="Search..." aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                                <div class="input-group-append">
+                                  <button id="button-addon1" type="submit" class="btn btn-link text-primary col-md-2"><i class="bi bi-search"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                            </form>
+                    </td>
+                    
+                    
+                </tr>
+            </thread>
+            <tbody>
+                {% for file in context reversed %}
+                <tr>
+                    <td>{{file.Name}}</td>
+                    <td>{{file.Usn}}</td>
+                    <td>{{file.Email}}</td>
+                    <td>
+                    {{file.Sem}}
+                    </td>
+                    <td>
+                        <span style="float:left" >
+                            <a href="{% url 'S_edit' file.id  %}"  >
+                                <button class="btn btn-outline-primary" type="button" style="margin-right: 10px;  background-color: rgb(162, 188, 218); border-color:aquamarine"><i class="bi bi-pencil-square"></i></button>
+    
+                            </a>
+                            
+                        </span>
+                                <form action="{%url 'S_delete' file.id%}" method="post"  >
+                                    {%csrf_token%}
+                                     <button class=" btn btn-outline-danger" type="submit" style="border-color:red">
+                                         <i class="bi bi-trash" style="color: red; "></i>
+                                     </button>
+                                 </form>
+                            
+                                
+    
+                           
+                        
+                    </td>
+                    
+                    
+                    
+        
+                </tr>
+                
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</body>
+{% endif %}
+{% endblock content %}

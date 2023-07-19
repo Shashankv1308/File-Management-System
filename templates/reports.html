@@ -1,0 +1,11 @@
+{% include 'base.html' %}
+
+{% block content%}
+{% if user.is_authenticated and user.is_admin %}
+<body style="background-color: rgba(143, 158, 157, 0.671);">
+    <a  class="row m-4" href="{% url 'pdf'%}">Files Report</a>
+    <a  class="row m-4 "  href="{% url 'pdf1'%}">Students Report</a>
+    <a  class="row m-4" href="{% url 'pdf2'%}">Faculty Report</a>
+</body>
+{% endif %}
+{% endblock content %}

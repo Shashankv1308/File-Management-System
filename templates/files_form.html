@@ -1,0 +1,44 @@
+{% include 'base.html' %}
+{% block content %}
+<form class="col-12 mt-4"action="" method="post" autocomplete="off" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mt-4">
+        <label class="col-form-label">File Name</label>
+        {{ file_form.name}}
+      </div>
+      <div class="mt-4">
+        <label class="col-form-label">Date and Time</label>
+        {{ file_form.date }}
+      </div>
+      <div class="mt-4">
+        <label class="col-form-label">Source</label>
+        {{ file_form.source}}
+      </div>
+      <div class="mt-4">
+        <label class="col-form-label">FOR</label>
+        {{ file_form.fo}}
+      </div>
+      <div class="mt-4">
+        <label class="col-form-label">Upload file</label>
+        {{ file_form.files}}
+      </div>
+
+    <div class="row mt-4" >
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-success btn-block btn-lg"> 
+                 submit
+                </button>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'files_list' %}" class="btn btn-secondary btn-block btn-lg">
+                Back to list
+              </a>
+        </div>
+
+    </div>
+    
+</form>
+
+
+
+{% endblock content %}
